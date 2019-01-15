@@ -36,7 +36,9 @@ class SearchPage extends React.Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-            <Link to="/">Close</Link>
+            <Link className="close-search" to="/">
+               Close
+            </Link>
             <div className="search-books-input-wrapper">
                 <input
                 type="text" 
@@ -49,7 +51,7 @@ class SearchPage extends React.Component {
         <div className="search-books-results">
             {results.length > 1 && (
             <div>
-              <h3>Search returned {results.length} books </h3>
+              <h2 className="bookshelf-title">Search returned {results.length} books </h2>
               <ol className="books-grid">
                 {results.map((book) => (
                 <li key={ book.id }>
@@ -64,7 +66,7 @@ class SearchPage extends React.Component {
             </div>
           )}
           {searchErr && (
-            <h3>Search did not return any books. Please try again!</h3>
+            <h2 className="bookshelf-title">Search did not return any books.<br />Please try again</h2>
           )}
         </div>
     </div>

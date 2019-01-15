@@ -41,10 +41,12 @@ class BooksApp extends React.Component {
         {isLoading ? (
         <h2 className="loading">Loading</h2>
         ) : (
-          <Switch>
-            <Route exact path="/" component={() => <BookFeed books={books} updateShelf={this.updateShelf} />} />
-            <Route path="/search" render={({ history }) => (<SearchPage updateShelf={this.updateShelf} /> )} />
-          </Switch>
+          <main className="wrapper">
+            <Switch>
+              <Route exact path="/" component={() => <BookFeed books={books} updateShelf={this.updateShelf} />} />
+              <Route path="/search" render={({ history }) => (<SearchPage updateShelf={this.updateShelf} /> )} />
+            </Switch>
+          </main>
         )}
       </div>
     );
