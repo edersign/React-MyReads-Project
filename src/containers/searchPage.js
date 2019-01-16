@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { Debounce } from 'react-throttle';
 import * as BooksAPI from '../utils/BooksAPI';
 import BookItem from '../components/bookItem';
 
@@ -14,12 +15,13 @@ class SearchPage extends React.Component {
         searchErr: false
     }
 
-    updateQuery = event => {
+    updateQuery = e => {
+        //console.log(e)
         this.setState(() => ({
-            query: event.trim()
+            query: e.trim()
         }))
 
-        BooksAPI.search(event, 20).then((results) => {
+        BooksAPI.search(e, 20).then((results) => {
             this.setState({ 
                 results
             })
@@ -32,7 +34,9 @@ class SearchPage extends React.Component {
     
     const searchErr = results ? results.error : results.length > 0;
 
-    console.log(results)
+    console.log('results', results)
+    console.log('query', query)
+    
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -40,12 +44,9 @@ class SearchPage extends React.Component {
                Close
             </Link>
             <div className="search-books-input-wrapper">
-                <input
-                type="text" 
-                placeholder="Search by title or author"
-                value={query}
-                onChange={(event) => this.updateQuery(event.target.value)}
-                />
+                <Debounce time="400" handler="onChange">
+                    <input type="text" placeholder="Search by title or author" onChange={(e) => this.updateQuery(e.target.value)} />
+                </Debounce>
             </div>
         </div>
         <div className="search-books-results">
@@ -66,7 +67,7 @@ class SearchPage extends React.Component {
             </div>
           )}
           {searchErr && (
-            <h2 className="bookshelf-title">Search did not return any books.<br />Please try again</h2>
+            <h2 className="bookshelf-title">Search did not return any books for {query}.<br />Please try again</h2>
           )}
         </div>
     </div>
