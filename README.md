@@ -16,11 +16,11 @@ Para iniciar o desenvolvimento:
 
 ## Backend Server
 
-Como backend não é objectivo do projeto, um arquivo base de conexão com servidor foi disponibilizado [`BooksAPI.js`](src/ultils/BooksAPI.js) que utilzia os métodos:
+Como backend não é objectivo do projeto, um arquivo base de conexão com servidor foi disponibilizado [`BooksAPI.js`](src/utils/BooksAPI.js) que utilzia os métodos:
 
-* [`getAll`](#getall) # Obter todos os livros
-* [`update`](#update) # Atualize os livros 
-* [`search`](#search) # Produre por livros
+* [`getAll`](#getall) #Obter todos os livros
+* [`update`](#update) #Atualize os livros 
+* [`search`](#search) #Produre por livros
 
 ### `getAll`
 
