@@ -3,8 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import * as BooksAPI from './utils/BooksAPI';
 
 import Header from './components/header';
-import BookFeed from './containers/BookFeed'
-import SearchPage from './containers/searchPage'
+import BookFeed from './containers/BookFeed';
+import SearchPage from './containers/searchPage';
+import Preload from './components/preload';
 import './App.css';
 
 class BooksApp extends React.Component {
@@ -46,7 +47,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <Header title='MyReads' />
         {isLoading ? (
-        <h2 className="loading">Loading</h2>
+          <Preload />
         ) : (
           <main className="wrapper">
             <Switch>
